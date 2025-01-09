@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dno1cao2wdjmp"]
+
+[ext_resource type="Script" uid="uid://0cw2tw7g1ikk" path="res://test_node.gd" id="1_jotil"]
+[ext_resource type="Texture2D" uid="uid://gwue37p38c0r" path="res://300193.jpg" id="2_44gc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44gc5"]
+size = Vector2(54.9, 78)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TestNode" type="Node2D" parent="."]
+position = Vector2(205, 264)
+script = ExtResource("1_jotil")
+
+[node name="view" type="Node2D" parent="TestNode"]
+
+[node name="sprite" type="Sprite2D" parent="TestNode/view"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_44gc5")
+
+[node name="Area2D" type="Area2D" parent="TestNode/view"]
+scale = Vector2(6.66667, 6.66667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestNode/view/Area2D"]
+shape = SubResource("RectangleShape2D_44gc5")
+
+[connection signal="mouse_entered" from="TestNode/view/Area2D" to="TestNode" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="TestNode/view/Area2D" to="TestNode" method="_on_area_2d_mouse_exited"]
