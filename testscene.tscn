@@ -1,28 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dno1cao2wdjmp"]
+[gd_scene load_steps=3 format=3 uid="uid://dno1cao2wdjmp"]
 
-[ext_resource type="Script" uid="uid://0cw2tw7g1ikk" path="res://test_node.gd" id="1_jotil"]
-[ext_resource type="Texture2D" uid="uid://gwue37p38c0r" path="res://300193.jpg" id="2_44gc5"]
+[ext_resource type="PackedScene" uid="uid://dnekn4nocyxwl" path="res://hand/hand.tscn" id="1_jotil"]
+[ext_resource type="PackedScene" uid="uid://cm778tq2oh6b0" path="res://card/card.tscn" id="2_44gc5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_44gc5"]
-size = Vector2(54.9, 78)
+[node name="root" type="Node3D"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.960039, 0.133746, -0.245839, 0, 0.878418, 0.477893, 0.279866, -0.458796, 0.843316, 3.72471, -8.70755, -18.462)
 
-[node name="TestNode" type="Node2D" parent="."]
-position = Vector2(205, 264)
-script = ExtResource("1_jotil")
+[node name="Hand" parent="Camera3D" instance=ExtResource("1_jotil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
-[node name="view" type="Node2D" parent="TestNode"]
+[node name="Card" parent="Camera3D/Hand" instance=ExtResource("2_44gc5")]
 
-[node name="sprite" type="Sprite2D" parent="TestNode/view"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_44gc5")
+[node name="Card2" parent="Camera3D/Hand" instance=ExtResource("2_44gc5")]
 
-[node name="Area2D" type="Area2D" parent="TestNode/view"]
-scale = Vector2(6.66667, 6.66667)
+[node name="Card3" parent="Camera3D/Hand" instance=ExtResource("2_44gc5")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestNode/view/Area2D"]
-shape = SubResource("RectangleShape2D_44gc5")
+[node name="Card4" parent="Camera3D/Hand" instance=ExtResource("2_44gc5")]
 
-[connection signal="mouse_entered" from="TestNode/view/Area2D" to="TestNode" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="TestNode/view/Area2D" to="TestNode" method="_on_area_2d_mouse_exited"]
+[node name="Card5" parent="Camera3D/Hand" instance=ExtResource("2_44gc5")]
+
+[node name="Card6" parent="Camera3D/Hand" instance=ExtResource("2_44gc5")]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm778tq2oh6b0"]
+
+[ext_resource type="Script" uid="uid://ciggst6kywo2q" path="res://card/card.gd" id="1_1ekb5"]
+[ext_resource type="Texture2D" uid="uid://c2wb7t8g8p2op" path="res://card/card.png" id="2_trrkg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ekb5"]
+size = Vector3(8, 11, 0.2)
+
+[node name="Card" type="Node3D"]
+script = ExtResource("1_1ekb5")
+metadata/_custom_type_script = ExtResource("1_1ekb5")
+
+[node name="View" type="Sprite3D" parent="."]
+texture = ExtResource("2_trrkg")
+
+[node name="Area3D" type="Area3D" parent="."]
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_1ekb5")
+
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_mouse_exited"]
