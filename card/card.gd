@@ -22,7 +22,7 @@ func _on_mouse_entered() -> void:
 	if tween:
 		tween.stop()
 	tween = get_tree().create_tween()
-	tween.tween_property($View, "scale", Vector3.ONE * 1.1, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "scale", Vector3.ONE * 1.1, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	$View.sorting_offset = 10000
 	$View.modulate = Color.WHITE
 
@@ -31,7 +31,7 @@ func _on_mouse_exited() -> void:
 	if tween:
 		tween.stop()
 	tween = get_tree().create_tween()
-	tween.tween_property($View, "scale", Vector3.ONE * 1.0, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "scale", Vector3.ONE * 1.0, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	position.z = 0
 	$View.modulate = Color.GRAY
 	$View.sorting_offset = 100 - get_index()
